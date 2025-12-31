@@ -3639,7 +3639,7 @@ function fuzz() {
 
 				# Normal targets
 				if [[ -s .tmp/webs_normal.txt ]]; then
-					interlace -tL .tmp/webs_normal.txt -threads ${INTERLACE_THREADS} -c "ffuf ${FFUF_FLAGS} -t ${FFUF_THREADS} -rate ${FFUF_RATELIMIT} -H \"${HEADER}\" -w ${fuzz_wordlist} -maxtime ${FFUF_MAXTIME} -u _target_/FUZZ -o _output_/_cleantarget_.json" -o $dir/.tmp/fuzzing 2>>"$LOGFILE" >/dev/null
+					interlace -tL .tmp/webs_normal.txt -threads ${INTERLACE_THREADS} -c "ffuf -ac ${FFUF_FLAGS} -t ${FFUF_THREADS} -rate ${FFUF_RATELIMIT} -H \"${HEADER}\" -w ${fuzz_wordlist} -maxtime ${FFUF_MAXTIME} -u _target_/FUZZ -o _output_/_cleantarget_.json" -o $dir/.tmp/fuzzing 2>>"$LOGFILE" >/dev/null
 				fi
 				# Slow targets with reduced threads/rate
 				if [[ -s .tmp/webs_slow.txt ]]; then
